@@ -1,11 +1,9 @@
 package com.github.nuuttirissanen.oh2vko8.tehtava2;
 
-import com.github.nuuttirissanen.oh2vko8.tehtava1.Tulosta;
-
 public class Tehtava2 {
-    public static void main(String[] args) {
-        Runnable tulostaA = new com.github.nuuttirissanen.oh2vko8.tehtava1.Tulosta("Ja tulostuu", 100);
-        Runnable tulostaB = new com.github.nuuttirissanen.oh2vko8.tehtava1.Tulosta("Ja tulostuu lisää", 100);
+    public static void main(String[] args) throws InterruptedException {
+        Runnable tulostaA = new Tulosta("Ja tulostuu", 100);
+        Runnable tulostaB = new Tulosta("Ja tulostuu lisää", 100);
         Runnable tulostaC = new Tulosta("Ja vieläkin lisää", 100);
 
         Thread t1 = new Thread(tulostaA);
@@ -13,8 +11,11 @@ public class Tehtava2 {
         Thread t3 = new Thread(tulostaC);
 
         t1.start();
+        t1.join();
         t2.start();
+        t2.join();
         t3.start();
+        t3.join();
     }
 }
 
