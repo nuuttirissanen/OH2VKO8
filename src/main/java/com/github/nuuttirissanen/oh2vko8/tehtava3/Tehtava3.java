@@ -7,6 +7,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+
 public class Tehtava3 extends Application{
 
     @Override
@@ -19,14 +20,15 @@ public class Tehtava3 extends Application{
 
         Scene scene = new Scene(root, 600, 400);
         ikkuna.widthProperty().addListener((observable -> {
-            ympyra.setRadius(Math.min(ikkuna.getHeight() -28, ikkuna.getWidth()) / 2);
+            ympyra.setRadius(Math.min(ikkuna.getHeight() - (ikkuna.getHeight() - scene.getHeight()) , ikkuna.getWidth()) / 2);
         }));
         ikkuna.heightProperty().addListener((observable -> {
-            ympyra.setRadius(Math.min(ikkuna.getHeight() -28 , ikkuna.getWidth()) / 2);
+            ympyra.setRadius(Math.min(ikkuna.getHeight() - (ikkuna.getHeight() - scene.getHeight()), ikkuna.getWidth()) / 2);
         }));
 
         new Thread(new Runnable() {
             Color vari;
+
             @Override
             public void run() {
                 try {
@@ -47,6 +49,7 @@ public class Tehtava3 extends Application{
 
                 }
                 catch(InterruptedException e) {
+                    System.out.println(e);
                 }
             }
         }).start();
